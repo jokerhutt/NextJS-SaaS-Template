@@ -5,11 +5,11 @@
 
 
 ## Prisma DB run commands in package.json
-Generate prisma client: `happens after npm install (postinstall)`
-Create and run migrations (local dev): `npm run db:migrate`
-Create and run migrations (live/prod): `npm run db:deploy`
-Regenerate Prisma Client: `npm run db:generate`
-Run Prisma GUI: `npm run db:studio`
+- Generate prisma client: `happens after npm install (postinstall)`
+- Create and run migrations (local dev): `npm run db:migrate`
+- Create and run migrations (live/prod): `npm run db:deploy`
+- Regenerate Prisma Client: `npm run db:generate`
+- Run Prisma GUI: `npm run db:studio`
 
 
 ## For the Postgres DB
