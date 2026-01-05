@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthProvider, useAuth } from "@/components/auth/AuthProvider";
+import { AuthProvider, useAuth } from "@/lib/auth/AuthProvider";
 import { Button } from "@/components/button";
 import { Status } from "@/components/debug/status";
 
