@@ -1,7 +1,7 @@
 "use client";
 
 import { AuthProvider, useAuth } from "@/lib/auth/AuthProvider";
-import { Button } from "@/components/button";
+import { Button } from "@/components/ui/button";
 import { Status } from "@/components/debug/status";
 
 export default function Home() {
