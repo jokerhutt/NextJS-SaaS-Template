@@ -6,9 +6,10 @@ import { randomUUID } from "crypto";
 
 export async function POST(request: NextRequest) {
   const requestId = randomUUID();
+  const route = request.nextUrl.pathname;
 
   logger.info(
-    {requestId, method: "POST", route: "/api/auth/sync"},
+    {requestId, method: "POST", route},
     "Auth sync request received"
   );
 
@@ -16,7 +17,7 @@ export async function POST(request: NextRequest) {
     const authHeader = request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
       logger.warn(
-        {requestId, route: "/api/auth/sync"}, 
+        {requestId, route}, 
         "missing authorization header"
       );
       return NextResponse.json({ error: "Missing token" }, { status: 401 });
@@ -46,7 +47,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ user });
   } catch (error) {
     logger.error(
-      {requestId, error, route: "/api/auth/sync"}, 
+      {requestId, error, route}, 
       "Auth sync error"
     );
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
