@@ -8,14 +8,17 @@ export async function POST(request: NextRequest) {
   const requestId = randomUUID();
 
   logger.info(
-    {requestId, method: "POST", route: "/api/auth/sync" },
+    {requestId, method: "POST", route: "/api/auth/sync"},
     "Auth sync request received"
   );
 
   try {
     const authHeader = request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      logger.warn({requestId, route: "/api/auth/sync" }, "missing authorization header");
+      logger.warn(
+        {requestId, route: "/api/auth/sync"}, 
+        "missing authorization header"
+      );
       return NextResponse.json({ error: "Missing token" }, { status: 401 });
     }
 
@@ -36,17 +39,16 @@ export async function POST(request: NextRequest) {
     });
 
     logger.info(
-      {
-        requestId,
-        userId: user.id,
-        firebaseUid: decoded.uid,
-      },
+      {requestId, userId: user.id, firebaseUid: decoded.uid},
       "user synced successfully"
     );
 
     return NextResponse.json({ user });
   } catch (error) {
-    logger.error({requestId, error, route: "/api/auth/sync" }, "Auth sync error");
+    logger.error(
+      {requestId, error, route: "/api/auth/sync"}, 
+      "Auth sync error"
+    );
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
   }
 }
