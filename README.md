@@ -1,7 +1,9 @@
 ## For the app
 
-1. npm ci
-2. npm run dev
+1. Fill in your Firebase info in .env (use .env.example)
+2. Enable Google auth in Firebase
+3. Setup database locally (below)
+4. run `npm install && npm run dev`
 
 
 ## Prisma DB run commands in package.json
